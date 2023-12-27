@@ -1,6 +1,6 @@
 import { ReactElement, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthStore from '../../store/data/AuthStore'
+import AuthStore from '../../store/data/OrthancStore'
 
 const PrivateRoute: React.FC<{ children: ReactElement | null }> = ({ children }) => {
   const navigate = useNavigate()

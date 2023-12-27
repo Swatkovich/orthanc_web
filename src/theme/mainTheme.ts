@@ -66,21 +66,17 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
           h1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //32px
-            fontSize: '3.8vh',
+            fontSize: '32px',
             fontStyle: 'normal',
             fontWeight: 700,
-            //40px
-            lineHeight: '4.74vh',
+            lineHeight: '40px',
           },
           h2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //14px
-            fontSize: '1.66vh',
+            fontSize: '24px',
             fontStyle: 'normal',
-            fontWeight: 400,
-            //24px
-            lineHeight: '2.84vh',
+            fontWeight: 700,
+            lineHeight: '32px',
           },
           h3: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
@@ -102,12 +98,10 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
           subtitle1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //12px
-            fontSize: '1.42vh',
+            fontSize: '16px',
             fontStyle: 'normal',
             fontWeight: 400,
-            //16px
-            lineHeight: '1.9vh',
+            lineHeight: '20px',
           },
           subtitle2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
