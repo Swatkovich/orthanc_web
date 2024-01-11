@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { createContext } from 'react'
-import { ServerStatistics, Study, SystemInfo, universalAxios } from '../../../interface/client'
+import { ServerStatistics, StudyFull, SystemInfo, universalAxios } from '../../../interface/client'
 import { configure } from 'mobx'
 
 configure({
@@ -14,7 +14,7 @@ class OrthancStore {
 
   studiesId: string[] = []
 
-  studies: Study[] = []
+  studies: StudyFull[] = []
 
   systemInfo: SystemInfo | null = null
 
@@ -50,6 +50,15 @@ class OrthancStore {
           studyDate: data.MainDicomTags.StudyDate,
           modalitiesInStudy: data.RequestedTags.ModalitiesInStudy,
           series: data.Series,
+          labels: data.Labels,
+          studyTime: data.MainDicomTags.StudyTime,
+          accessionNumber: data.MainDicomTags.AccessionNumber,
+          studyId: data.MainDicomTags.StudyID,
+          studyInstanceUID: data.MainDicomTags.StudyInstanceUID,
+          requestingPhysician: '',
+          referringPhysicianName: data.MainDicomTags.ReferringPhysicianName,
+          institutionName: data.MainDicomTags.InstitutionName,
+          patientSex: data.PatientMainDicomTags.PatientSex,
         })
       )
     )

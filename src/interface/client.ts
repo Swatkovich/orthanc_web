@@ -110,6 +110,18 @@ export interface Study {
   series: [string]
 }
 
+export interface StudyFull extends Study {
+  labels: [string]
+  studyTime: string
+  accessionNumber: string
+  studyId: string
+  studyInstanceUID: string
+  requestingPhysician: string
+  referringPhysicianName: string
+  institutionName: string
+  patientSex: string
+}
+
 export interface ServerStatistics {
   studies: number
   series: number
