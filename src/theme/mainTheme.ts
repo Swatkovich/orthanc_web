@@ -6,19 +6,26 @@ function mainThemeBase(isDarkTheme?: boolean): Theme {
   return createTheme({
     palette: {
       primary: {
-        main: isDarkTheme ? '#252525' : '#FFFFFF',
-        light: '#EBE3FF',
-        dark: '#9063FF',
+        main: '#08070D',
+        light: '#211E2C',
+        dark: '#14121C',
       },
       secondary: {
-        main: '#333333',
+        main: '#413A8B',
+        light: '#5750A6',
+        dark: '',
       },
       error: {
         main: '#E85353',
+        light: '',
+        dark: '',
+      },
+      success: {
+        main: '#90EE94',
       },
       text: {
-        primary: isDarkTheme ? '#FAFAFA' : '#252323',
-        secondary: '#000000',
+        primary: isDarkTheme ? '#F8F8F8' : '#252323',
+        secondary: '#F8F8FF80',
         disabled: '#797979',
       },
       grey: {
@@ -48,28 +55,24 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
         styleOverrides: {
           body1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //18px
-            fontSize: '2.13vh',
+            fontSize: '18px',
             fontStyle: 'normal',
             fontWeight: 700,
-            //24px
-            lineHeight: '2.84vh',
+            lineHeight: '24px',
           },
           body2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //16px
-            fontSize: '1.9vh',
+            fontSize: '16px',
             fontStyle: 'normal',
             fontWeight: 400,
-            //24px
-            lineHeight: '2.84vh',
+            lineHeight: '18px',
           },
           h1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            fontSize: '32px',
+            fontSize: '18px',
             fontStyle: 'normal',
             fontWeight: 700,
-            lineHeight: '40px',
+            lineHeight: '24px',
           },
           h2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
@@ -166,35 +169,24 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
         },
         styleOverrides: {
           root: {
-            transition: 'color 0.05s ease-in-out 0s, background-color 0.5s ease-in-out 0s',
             textTransform: 'none',
-            height: '5.45vh',
-            width: '100%',
-            padding: '1.42vh',
-            borderRadius: '1.42vh',
-            fontSize: '1.9vh',
+            height: '48px',
+            padding: '12px 24px',
+            borderRadius: '8px',
+            fontSize: '16px',
             fontStyle: 'normal',
-            fontWeight: 700,
-            lineHeight: '2.84vh',
-            '> svg': {
-              fill: mainThemeBase(isDarkTheme).palette.text.primary,
-              '> path': {
-                fill: mainThemeBase(isDarkTheme).palette.text.primary,
-                stroke: mainThemeBase(isDarkTheme).palette.text.primary,
-              },
-            },
+            fontWeight: 600,
+            lineHeight: '24px',
+            boxShadow: 'none',
+            color: mainThemeBase(isDarkTheme).palette.text.primary,
           },
           contained: {
-            boxShadow: 'none',
-            background: mainThemeBase(isDarkTheme).palette.primary.dark,
-            color: mainThemeBase(true).palette.text.primary,
+            background: mainThemeBase(isDarkTheme).palette.secondary.main,
             '&:hover': {
-              boxShadow: 'none',
-              background: mainThemeBase(isDarkTheme).palette.primary.dark,
+              background: mainThemeBase(isDarkTheme).palette.secondary.light,
             },
           },
           outlined: {
-            color: mainThemeBase(isDarkTheme).palette.text.primary,
             border: `1px solid ${mainThemeBase(isDarkTheme).palette.grey[300]}`,
             '&:hover': {
               borderColor: mainThemeBase(isDarkTheme).palette.grey[300],

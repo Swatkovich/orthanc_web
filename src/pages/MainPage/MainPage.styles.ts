@@ -6,24 +6,8 @@ export const AuthWrapper = styled('div')(({ theme }) => ({
   height: '100%',
 }))
 
-export const ButtonsWrapper = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexFlow: 'column',
-  alignItems: 'center',
-  width: '400px',
-  padding: '10px',
-  border: '1px solid white',
-}))
-
 export const DataWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   flexFlow: 'column',
   width: '100%',
-}))
-
-export const InfoWrapper = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexFlow: 'column',
-  width: '100%',
-  marginTop: 'auto',
 }))

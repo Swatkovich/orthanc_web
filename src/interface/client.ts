@@ -5,16 +5,13 @@ const instance = axios.create({
   baseURL: config.url.API_BASE_URL,
 })
 
-const tt = 'orthanc'
-const ttt = 'orthanc'
-const basicAuth = 'Basic ' + btoa(tt + ':' + ttt)
+const login = 'orthanc'
+const password = 'orthanc'
+const basicAuth = 'Basic ' + btoa(login + ':' + password)
 
 instance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      config.headers.Authorization = basicAuth
-    }
+    config.headers.Authorization = basicAuth
     return config
   },
   (error) => {
@@ -111,13 +108,9 @@ export interface Study {
 }
 
 export interface StudyFull extends Study {
-  labels: [string]
   studyTime: string
-  accessionNumber: string
   studyId: string
   studyInstanceUID: string
-  requestingPhysician: string
-  referringPhysicianName: string
   institutionName: string
   patientSex: string
 }
@@ -130,11 +123,8 @@ export interface ServerStatistics {
 }
 
 export interface SystemInfo {
-  orthancVersion: string
   dicomAet: string
-  orthancName: string
   dicomPort: number
-  ingestTranscoding: string
   overwriteInstances: boolean
   storageCompression: boolean
 }

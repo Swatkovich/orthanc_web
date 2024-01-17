@@ -50,13 +50,9 @@ class OrthancStore {
           studyDate: data.MainDicomTags.StudyDate,
           modalitiesInStudy: data.RequestedTags.ModalitiesInStudy,
           series: data.Series,
-          labels: data.Labels,
           studyTime: data.MainDicomTags.StudyTime,
-          accessionNumber: data.MainDicomTags.AccessionNumber,
           studyId: data.MainDicomTags.StudyID,
           studyInstanceUID: data.MainDicomTags.StudyInstanceUID,
-          requestingPhysician: '',
-          referringPhysicianName: data.MainDicomTags.ReferringPhysicianName,
           institutionName: data.MainDicomTags.InstitutionName,
           patientSex: data.PatientMainDicomTags.PatientSex,
         })
@@ -88,11 +84,8 @@ class OrthancStore {
     return universalAxios.getSystem().then(
       (data) =>
         (this.systemInfo = {
-          orthancVersion: data.Version,
           dicomAet: data.DicomAet,
-          orthancName: data.Name,
           dicomPort: data.DicomPort,
-          ingestTranscoding: data.ingestTranscoding,
           overwriteInstances: data.OverwriteInstances,
           storageCompression: data.StorageCompression,
         })

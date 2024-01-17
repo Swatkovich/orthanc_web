@@ -1,7 +1,7 @@
-import enLocale from './ru'
+import ruLocale from './ru'
 
 const FormatMessage = (id: string) => {
-  if (enLocale[id]) return enLocale[id]
+  if (ruLocale[id]) return ruLocale[id]
   else return '???'
 }
 
