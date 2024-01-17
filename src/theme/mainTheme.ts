@@ -13,7 +13,7 @@ function mainThemeBase(isDarkTheme?: boolean): Theme {
       secondary: {
         main: '#413A8B',
         light: '#5750A6',
-        dark: '',
+        dark: '#191724',
       },
       error: {
         main: '#E85353',
@@ -258,110 +258,53 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
         },
       },
-      MuiRating: {
+      MuiTable: {
         styleOverrides: {
           root: {
-            fontSize: '1.9vh',
-            color: mainThemeBase(isDarkTheme).palette.primary.dark,
-          },
-          icon: {
-            color: mainThemeBase(isDarkTheme).palette.primary.dark,
-            opacity: 1,
+            background: mainThemeBase(isDarkTheme).palette.primary.dark,
+            borderRadius: '12px',
           },
         },
       },
-      MuiPaper: {
+      MuiTableBody: {
         styleOverrides: {
-          root: {
-            background: 'unset',
-            boxShadow: 'unset',
-            '> ul': {
-              padding: 0,
-              width: '4.27vh',
-              height: '4.27vh',
-              overflow: 'hidden',
-            },
-          },
+          root: {},
         },
       },
-      MuiFormGroup: {
+      MuiTableRow: {
         styleOverrides: {
           root: {
-            maxHeight: '43.84vh',
-            display: 'flex',
-            flexFlow: 'column',
-            overflowY: 'auto',
-            overflowX: 'hidden',
-            width: '90%',
-            '> *': {
-              marginTop: '0.71vh',
+            '&:hover': {
+              background: mainThemeBase(isDarkTheme).palette.secondary.dark,
             },
-            '&::-webkit-scrollbar': {
-              width: '2.05vw',
-            },
-            '&::-webkit-scrollbar-track': {
-              background: mainThemeBase(isDarkTheme).palette.grey[300],
-              borderRadius: '1.025vw',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: mainThemeBase(isDarkTheme).palette.grey[600],
-              borderRadius: '1.025vw',
+            '&.MuiTableRow-head': {
+              '&:hover': {
+                background: 'unset',
+              },
             },
           },
         },
       },
-      MuiFormControlLabel: {
+      MuiTableCell: {
         styleOverrides: {
           root: {
-            marginLeft: 0,
-            marginRight: 0,
-          },
-        },
-      },
-      MuiCheckbox: {
-        styleOverrides: {
-          root: {
-            padding: 0,
-            marginRight: '2.05vw',
-            color: mainThemeBase(isDarkTheme).palette.primary.dark,
-            '&.Mui-checked': {
-              color: mainThemeBase(isDarkTheme).palette.primary.dark,
-            },
-            '& .MuiSvgIcon-root': {
-              fontSize: '2.84vh',
-            },
-          },
-        },
-      },
-      MuiTabs: {
-        styleOverrides: {
-          root: {
-            width: '100%',
-            borderRadius: '1.42vh',
-          },
-          indicator: {
-            height: '0px',
-          },
-        },
-      },
-      MuiTab: {
-        styleOverrides: {
-          root: {
-            textTransform: 'none',
-            width: '50%',
-            borderRadius: '1.42vh',
-            //14px
-            fontSize: '1.66vh',
-            fontStyle: 'normal',
+            background: 'transparent',
+            border: 'none',
+            boxSizing: 'border-box',
+            height: '64px',
+            fontSize: '14px',
+            lineHeight: '20px',
             fontWeight: 400,
-            //24px
-            lineHeight: '2.84vh',
-            '&.Mui-selected': {
-              width: '50%',
-              borderRadius: '1.42vh',
-              background: mainThemeBase(isDarkTheme).palette.primary.dark,
+            padding: '20px 16px',
+            alignItems: 'center',
+            cursor: 'pointer',
+            '&.MuiTableCell-head': {
+              cursor: 'unset',
+              fontWeight: 500,
+              height: '36px',
+              padding: '8px 16px',
+              color: mainThemeBase(isDarkTheme).palette.text.secondary,
             },
-            transition: 'color 0.01s ease-in-out 0s, background-color 0.075s ease-in-out 0s',
           },
         },
       },

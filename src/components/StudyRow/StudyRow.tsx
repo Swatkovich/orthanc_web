@@ -1,5 +1,4 @@
-import { Button, Typography } from '@mui/material'
-import { StudyElement, StudyRowWrapper } from './StudyRow.styles'
+import { TableCell, TableRow } from '@mui/material'
 import OrthancStoreContext from '../../store/data/OrthancStore'
 import { useCallback, useContext, useState } from 'react'
 import { observer } from 'mobx-react'
@@ -29,33 +28,23 @@ const StudyRow: React.FC<Props> = observer((props) => {
 
   return (
     <>
-      <StudyRowWrapper onClick={studyOpen}>
-        <StudyElement>
-          <Typography>{study.patientBirthDate}</Typography>
-        </StudyElement>
-        <StudyElement>
-          <Typography>{study.patientId}</Typography>
-        </StudyElement>
-        <StudyElement>
-          <Typography>{study.studyDescription}</Typography>
-        </StudyElement>
-        <StudyElement>
-          <Typography>{study.studyDate}</Typography>
-        </StudyElement>
-        <StudyElement>
-          <Typography>{study.modalitiesInStudy}</Typography>
-        </StudyElement>
-        <StudyElement>
-          <Typography>{study.patientName}</Typography>
-        </StudyElement>
-        <StudyElement>
-          <Typography>{study.series.length}</Typography>
-        </StudyElement>
-        <Button sx={{ width: '10%', border: '1px solid red' }} onClick={() => onDelete(study.id)}>
-          <Typography>DELETE</Typography>
-        </Button>
-      </StudyRowWrapper>
-      {isOpen && <StudyOpen study={study as StudyFull} />}
+      <TableRow onClick={studyOpen}>
+        <TableCell>{study.patientBirthDate}</TableCell>
+        <TableCell>{study.patientName}</TableCell>
+        <TableCell>{study.patientId}</TableCell>
+        <TableCell>{study.studyDescription}</TableCell>
+        <TableCell>{study.studyDate}</TableCell>
+        <TableCell>{study.modalitiesInStudy}</TableCell>
+        <TableCell>{study.series.length}</TableCell>
+        <TableCell onClick={() => onDelete(study.id)}>DELETE</TableCell>
+      </TableRow>
+      <TableRow>
+        {isOpen && (
+          <TableCell style={{ padding: 0, margin: 0 }} colSpan={8}>
+            <StudyOpen study={study as StudyFull} />
+          </TableCell>
+        )}
+      </TableRow>
     </>
   )
 })

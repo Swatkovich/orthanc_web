@@ -12,6 +12,15 @@ const ruLocale: { [key: string]: string } = {
   'sidebar.statistics': 'STATISTICS',
   'sidebar.systemInfo': 'SYSTEM INFO',
   'sidebar.downloaded': 'Загружено',
+
+  //table
+  'table.header.patientBirthDate': 'Patient Birth Date',
+  'table.header.patientName': 'Patient Name',
+  'table.header.patientId': 'Patient ID',
+  'table.header.studyDescription': 'Study Description',
+  'table.header.studyDate': 'Study Description',
+  'table.header.modalitiesInStudy': 'Modalities in Study',
+  'table.header.series': '# series',
 }
 
 export default ruLocale

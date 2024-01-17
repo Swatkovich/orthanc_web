@@ -6,7 +6,6 @@ export const StudyOpenWrapper = styled('div')(({ theme }) => ({
   width: '100%',
   border: '1px solid white',
   padding: '20px',
-  marginBottom: '20px',
 }))
 
 export const StudyInfo = styled('div')(({ theme }) => ({
