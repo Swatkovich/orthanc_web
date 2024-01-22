@@ -92,12 +92,10 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
           h4: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //20px
-            fontSize: '2.34vh',
+            fontSize: '20px',
             fontStyle: 'normal',
-            fontWeight: 700,
-            //32px
-            lineHeight: '3.8vh',
+            fontWeight: 400,
+            lineHeight: '32px',
           },
           subtitle1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
@@ -108,12 +106,10 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
           subtitle2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //12px
-            fontSize: '1.42vh',
+            fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 400,
-            //24px
-            lineHeight: '2.84vh',
+            lineHeight: '20px',
           },
         },
       },
@@ -258,11 +254,30 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
         },
       },
+      MuiTableContainer: {
+        styleOverrides: {
+          root: {
+            '&::-webkit-scrollbar': {
+              width: '8px',
+            },
+            '&::-webkit-scrollbar-track': {
+              background: '#262536',
+              borderRadius: '4px',
+              marginTop: '68px',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: '#F8F8FF26',
+              borderRadius: '4px',
+            },
+          },
+        },
+      },
       MuiTable: {
         styleOverrides: {
           root: {
             background: mainThemeBase(isDarkTheme).palette.primary.dark,
-            borderRadius: '12px',
+            borderRadius: '16px',
+            padding: '32px',
           },
         },
       },
@@ -275,7 +290,14 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
         styleOverrides: {
           root: {
             '&:hover': {
-              background: mainThemeBase(isDarkTheme).palette.secondary.dark,
+              '& > td': {
+                background: mainThemeBase(isDarkTheme).palette.secondary.dark,
+              },
+            },
+            '&.clicked': {
+              '& > td': {
+                background: mainThemeBase(isDarkTheme).palette.secondary.light,
+              },
             },
             '&.MuiTableRow-head': {
               '&:hover': {
@@ -288,7 +310,7 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
       MuiTableCell: {
         styleOverrides: {
           root: {
-            background: 'transparent',
+            background: mainThemeBase(isDarkTheme).palette.primary.dark,
             border: 'none',
             boxSizing: 'border-box',
             height: '64px',

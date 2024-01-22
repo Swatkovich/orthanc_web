@@ -69,27 +69,29 @@ class OrthancStore {
   }
 
   getStatistics() {
-    return universalAxios.getStatistics().then(
-      (data) =>
-        (this.statistics = {
+    return universalAxios.getStatistics().then((data) => {
+      if (data) {
+        this.statistics = {
           studies: data.CountStudies,
           series: data.CountSeries,
           instances: data.CountInstances,
           storageSize: data.TotalDiskSizeMB,
-        })
-    )
+        }
+      }
+    })
   }
 
   getSystem() {
-    return universalAxios.getSystem().then(
-      (data) =>
-        (this.systemInfo = {
+    return universalAxios.getSystem().then((data) => {
+      if (data) {
+        this.systemInfo = {
           dicomAet: data.DicomAet,
           dicomPort: data.DicomPort,
           overwriteInstances: data.OverwriteInstances,
           storageCompression: data.StorageCompression,
-        })
-    )
+        }
+      }
+    })
   }
 
   clearStudies() {

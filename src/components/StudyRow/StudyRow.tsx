@@ -4,6 +4,7 @@ import { useCallback, useContext, useState } from 'react'
 import { observer } from 'mobx-react'
 import { Study, StudyFull } from '../../interface/client'
 import StudyOpen from '../StudyOpen'
+import { DeleteIconStyled } from './StudyRow.styles'
 
 interface Props {
   study: Study
@@ -36,7 +37,9 @@ const StudyRow: React.FC<Props> = observer((props) => {
         <TableCell>{study.studyDate}</TableCell>
         <TableCell>{study.modalitiesInStudy}</TableCell>
         <TableCell>{study.series.length}</TableCell>
-        <TableCell onClick={() => onDelete(study.id)}>DELETE</TableCell>
+        <TableCell onClick={() => onDelete(study.id)}>
+          <DeleteIconStyled />
+        </TableCell>
       </TableRow>
       <TableRow>
         {isOpen && (

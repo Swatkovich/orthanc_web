@@ -1,13 +1,13 @@
 import { observer } from 'mobx-react'
 import { CloseIconStyled, Info, Progress, ProgressBar, ProgressWrapper, SideBarWrapper } from './SideBar.styles'
 import { Box, Button, Typography } from '@mui/material'
-import { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import OrthancStoreContext from '../../store/data/OrthancStore'
 import FormatMessage from '../../dictionary/FormatMessage'
 
 const SideBar: React.FC = observer(() => {
   const orthancStore = useContext(OrthancStoreContext)
-  const { statistics, systemInfo, loadData, getStudiesId, getAllStudies } = orthancStore
+  const { statistics, systemInfo, loadData, getStudiesId, getStatistics, getSystem, getAllStudies } = orthancStore
   const [selectedFiles, setSelectedFiles] = useState<number>(0)
   const [completedCount, setCompletedCount] = useState<number>(0)
   const [isVisible, setIsVisible] = useState<boolean>(false)
@@ -26,6 +26,11 @@ const SideBar: React.FC = observer(() => {
     },
     [getAllStudies, getStudiesId, loadData]
   )
+
+  useEffect(() => {
+    getStatistics()
+    getSystem()
+  }, [getAllStudies, getStatistics, getStudiesId, getSystem])
 
   return (
     <SideBarWrapper>
