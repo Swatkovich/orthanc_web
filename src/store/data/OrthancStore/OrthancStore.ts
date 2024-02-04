@@ -55,9 +55,26 @@ class OrthancStore {
           studyInstanceUID: data.MainDicomTags.StudyInstanceUID,
           institutionName: data.MainDicomTags.InstitutionName,
           patientSex: data.PatientMainDicomTags.PatientSex,
+          seriesData: null,
         })
       )
     )
+  }
+
+  async getSeriesById(Studyid: string, studyListNumber: number) {
+    await universalAxios.getSeriesById(Studyid).then((data) => {
+      this.studies[studyListNumber].seriesData = {
+        number: data[0].MainDicomTags.SeriesNumber,
+        description: data[0].MainDicomTags.SeriesDescription,
+        modality: data[0].MainDicomTags.Modality,
+        instances: data[0].Instances.length,
+        date: data[0].MainDicomTags.SeriesDate,
+        time: data[0].MainDicomTags.SeriesTime,
+        bodyPartExamined: data[0].MainDicomTags.BodyPartExamined,
+        protocolName: data[0].MainDicomTags.ProtocolName,
+        seriesInstanceUID: data[0].MainDicomTags.SeriesInstanceUID,
+      }
+    })
   }
 
   loadData(data: any) {

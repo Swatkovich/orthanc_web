@@ -6,7 +6,7 @@ export const StudyOpenWrapper = styled('div')(({ theme }) => ({
   flexFlow: 'column',
   width: '100%',
   background: theme.palette.primary.light,
-  padding: '20px 0 20px 20px',
+  padding: '20px 20px 20px 20px',
   borderRadius: '8px',
 }))
 
@@ -34,6 +34,7 @@ export const Options = styled('div')(({ theme }) => ({
   width: '4%',
   alignItems: 'end',
   justifyContent: 'center',
+  paddingBottom: '20px',
 }))
 
 export const EditIconStyled = styled(EditIcon)(({ theme }) => ({

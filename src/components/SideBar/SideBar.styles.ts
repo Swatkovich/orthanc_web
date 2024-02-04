@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles'
 import { ReactComponent as CloseIcon } from '../../assets/img/close.svg'
+import logoBackground from '../../assets/img/logo.png'
 
 export const SideBarWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -21,7 +22,6 @@ export const Info = styled('div')(({ theme }) => ({
 export const ProgressWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   flexFlow: 'column',
-  // alignItems: 'center',
   width: '100%',
   border: `1px solid ${theme.palette.primary.light}`,
   padding: '28px 28px 24px 12px',
@@ -50,4 +50,22 @@ export const CloseIconStyled = styled(CloseIcon)(({ theme }) => ({
   top: 4,
   right: 4,
   cursor: 'pointer',
+}))
+
+export const ZipDownload = styled('div')(({ theme }) => ({
+  width: '100%',
+  border: `3px dashed ${theme.palette.primary.light}`,
+  height: '100px',
+  display: 'flex',
+  textAlign: 'center',
+  alignItems: 'center',
+}))
+
+export const Logo = styled('div')(({ theme }) => ({
+  width: '100%',
+  height: '207px',
+  backgroundPosition: 'center',
+  backgroundImage: `url(${logoBackground})`,
+  backgroundSize: 'cover',
+  marginBottom: '24px',
 }))

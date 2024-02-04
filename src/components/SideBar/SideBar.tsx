@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react'
-import { CloseIconStyled, Info, Progress, ProgressBar, ProgressWrapper, SideBarWrapper } from './SideBar.styles'
+import { CloseIconStyled, Info, Logo, Progress, ProgressBar, ProgressWrapper, SideBarWrapper } from './SideBar.styles'
 import { Box, Button, Typography } from '@mui/material'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import OrthancStoreContext from '../../store/data/OrthancStore'
@@ -34,6 +34,7 @@ const SideBar: React.FC = observer(() => {
 
   return (
     <SideBarWrapper>
+      <Logo />
       <label htmlFor="folderUpload">
         <Button variant="contained" component="span">
           {FormatMessage('sidebar.downloadFolder')}
@@ -44,7 +45,7 @@ const SideBar: React.FC = observer(() => {
           multiple
           // @ts-ignore
           webkitdirectory="true"
-          allowdirs
+          allowdirs="true"
           style={{ display: 'none' }}
           onChange={(event) => handleFileUpload(event)}
         ></input>
@@ -72,17 +73,17 @@ const SideBar: React.FC = observer(() => {
 
       <Info>
         <Typography variant="body1">{FormatMessage('sidebar.statistics')}</Typography>
-        <Typography variant="subtitle1">{`Studies: ${statistics?.studies}`}</Typography>
-        <Typography variant="subtitle1">{`Series: ${statistics?.series}`}</Typography>
-        <Typography variant="subtitle1">{`Instances: ${statistics?.instances}`}</Typography>
-        <Typography variant="subtitle1">{`StorageSize: ${statistics?.storageSize} MB`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('statistics.studies')}: ${statistics?.studies}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('statistics.series')}: ${statistics?.series}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('statistics.instances')}: ${statistics?.instances}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('statistics.storage')}: ${statistics?.storageSize} MB`}</Typography>
         <Box mt="24px">
           <Typography variant="body1">{FormatMessage('sidebar.systemInfo')}</Typography>
         </Box>
-        <Typography variant="subtitle1">{`DICOM AET: ${systemInfo?.dicomAet}`}</Typography>
-        <Typography variant="subtitle1">{`DICOM Port: ${systemInfo?.dicomPort}`}</Typography>
-        <Typography variant="subtitle1">{`Overwrite instances: ${systemInfo?.overwriteInstances}`}</Typography>
-        <Typography variant="subtitle1">{`Storage Compression: ${systemInfo?.storageCompression}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('info.dicomAet')}: ${systemInfo?.dicomAet}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('info.dicomPort')}: ${systemInfo?.dicomPort}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('info.overwrite')}: ${systemInfo?.overwriteInstances}`}</Typography>
+        <Typography variant="subtitle1">{`${FormatMessage('info.storage')}: ${systemInfo?.storageCompression}`}</Typography>
       </Info>
     </SideBarWrapper>
   )

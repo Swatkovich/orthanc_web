@@ -32,8 +32,8 @@ const Studies: React.FC = observer(() => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {studies!.map((study: Study) => (
-              <StudyRow study={study} />
+            {studies!.map((study: Study, i) => (
+              <StudyRow key={study.id} study={study} studyListNumber={i} />
             ))}
           </TableBody>
         </Table>

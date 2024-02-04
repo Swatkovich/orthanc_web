@@ -94,6 +94,15 @@ export const universalAxios = {
       console.log('getSystem: ' + error)
     }
   },
+
+  getSeriesById: async (Studyid: string) => {
+    try {
+      const response = await instance.get(`/studies/${Studyid}/series`)
+      return response.data
+    } catch (error: any) {
+      console.log('getSeriesById: ' + error)
+    }
+  },
 }
 
 export interface Study {
@@ -113,6 +122,19 @@ export interface StudyFull extends Study {
   studyInstanceUID: string
   institutionName: string
   patientSex: string
+  seriesData: SeriesFull | null
+}
+
+export interface SeriesFull {
+  number: string
+  description: string
+  modality: string
+  instances: number
+  date: string
+  time: string
+  bodyPartExamined: string
+  protocolName: string
+  seriesInstanceUID: string
 }
 
 export interface ServerStatistics {

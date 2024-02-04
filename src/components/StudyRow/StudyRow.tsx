@@ -8,10 +8,11 @@ import { DeleteIconStyled } from './StudyRow.styles'
 
 interface Props {
   study: Study
+  studyListNumber: number
 }
 
 const StudyRow: React.FC<Props> = observer((props) => {
-  const { study } = props
+  const { study, studyListNumber } = props
   const orthancStore = useContext(OrthancStoreContext)
   const { getAllStudies, deleteStudy } = orthancStore
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -44,7 +45,7 @@ const StudyRow: React.FC<Props> = observer((props) => {
       <TableRow>
         {isOpen && (
           <TableCell style={{ padding: 0, margin: 0 }} colSpan={8}>
-            <StudyOpen study={study as StudyFull} />
+            <StudyOpen study={study as StudyFull} studyListNumber={studyListNumber} />
           </TableCell>
         )}
       </TableRow>
