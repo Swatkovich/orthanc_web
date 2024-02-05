@@ -95,12 +95,33 @@ export const universalAxios = {
     }
   },
 
-  getSeriesById: async (Studyid: string) => {
+  getSeriesById: async (studyid: string) => {
     try {
-      const response = await instance.get(`/studies/${Studyid}/series`)
+      const response = await instance.get(`/studies/${studyid}/series`)
       return response.data
     } catch (error: any) {
       console.log('getSeriesById: ' + error)
+    }
+  },
+
+  studyEdit: async (study: IStudyEditForm, studyId: string) => {
+    try {
+      const tt = 'orthanc'
+      const ttt = 'orthanc'
+      const basicAuth = 'Basic ' + btoa(tt + ':' + ttt)
+      const postData = JSON.stringify(study)
+      fetch(`http://localhost:8042/studies/${studyId}/modify`, {
+        headers: {
+          accept: 'application/json',
+          authorization: basicAuth,
+        },
+        body: postData,
+        mode: 'no-cors',
+        method: 'POST',
+        credentials: 'include',
+      })
+    } catch (error: any) {
+      console.log('studyEdit: ' + error)
     }
   },
 }
@@ -149,4 +170,15 @@ export interface SystemInfo {
   dicomPort: number
   overwriteInstances: boolean
   storageCompression: boolean
+}
+
+export interface IStudyEditForm {
+  Force: boolean
+  Keep: []
+  KeepSource: boolean
+  Remove: []
+  Replace: {
+    [key: string]: string
+  }
+  Synchronous: boolean
 }

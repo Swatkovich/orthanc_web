@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { createContext } from 'react'
-import { ServerStatistics, StudyFull, SystemInfo, universalAxios } from '../../../interface/client'
+import { ServerStatistics, IStudyEditForm, StudyFull, SystemInfo, universalAxios } from '../../../interface/client'
 import { configure } from 'mobx'
 
 configure({
@@ -109,6 +109,10 @@ class OrthancStore {
         }
       }
     })
+  }
+
+  async studyEdit(study: IStudyEditForm, studyId: string) {
+    return await universalAxios.studyEdit(study, studyId)
   }
 
   clearStudies() {

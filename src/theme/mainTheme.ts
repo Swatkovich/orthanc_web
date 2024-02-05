@@ -117,18 +117,19 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
         styleOverrides: {
           root: {
             padding: 0,
-            borderRadius: '1.42vh',
-            height: '6.4vh',
-            fontSize: '1.9vh',
-            lineHeight: '2.84vh',
+            borderRadius: '8px',
+            height: '48px',
+            fontSize: '18px',
+            lineHeight: '24px',
             boxShadow: 'none',
             boxSizing: 'border-box',
             touchAction: 'none',
-            border: `1px solid ${mainThemeBase(isDarkTheme).palette.grey[300]}`,
+            border: `none`,
+            background: '#191724',
             '& input': {
-              padding: 0,
+              // padding: 0,
               paddingTop: '2.34vh',
-              paddingLeft: '1.9vh',
+              // paddingLeft: '1.9vh',
             },
             '& fieldset': {
               border: 'none',
@@ -136,23 +137,23 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
             '& label': {
               color: mainThemeBase(isDarkTheme).palette.text.primary,
               opacity: '1',
-              top: '1.9vh',
-              left: '0',
-              transform: 'translate(1.9vh, 0) scale(1)',
+              top: '4px',
+              // left: '0',
+              // transform: 'translate(1.9vh, 0) scale(1)',
               '&.Mui-focused': {
                 color: isDarkTheme ? '#757575' : '#757575',
-                transform: 'translate(1.9vh, -1.4vh) scale(0.75)',
+                transform: 'translate(14px, 0px) scale(0.75)',
               },
               '&.MuiFormLabel-filled': {
                 color: isDarkTheme ? '#757575' : '#757575',
-                transform: 'translate(1.9vh, -1.4vh) scale(0.75)',
+                transform: 'translate(14px, 0px) scale(0.75)',
               },
               '&.Mui-error': {
                 color: mainThemeBase(isDarkTheme).palette.text.primary,
               },
             },
             '&:hover': {
-              border: `1px solid ${mainThemeBase(isDarkTheme).palette.primary.dark}`,
+              // border: `1px solid ${mainThemeBase(isDarkTheme).palette.primary.dark}`,
             },
           },
         },
@@ -192,65 +193,71 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
       },
       MuiDialog: {
         styleOverrides: {
-          paperWidthSm: {
-            boxSizing: 'border-box',
-            padding: '2.84vh 4.1vw',
-            width: '91.8vw',
-            margin: 0,
-            maxWidth: 'unset',
-            borderRadius: '1.42vh',
-            backgroundColor: mainThemeBase(isDarkTheme).palette.primary.main,
-          },
+          // paperWidthSm: {
+          //   boxSizing: 'border-box',
+          //   padding: '2.84vh 4.1vw',
+          //   width: '91.8vw',
+          //   margin: 0,
+          //   maxWidth: 'unset',
+          //   borderRadius: '1.42vh',
+          //   backgroundColor: mainThemeBase(isDarkTheme).palette.primary.light,
+          // },
           paperWidthMd: {
-            marginTop: '65vh !important',
+            width: '720px',
             boxSizing: 'border-box',
-            padding: '2.84vh 4.1vw',
-            width: '91.8vw',
-            margin: 0,
-            maxWidth: 'unset',
-            borderRadius: '1.42vh',
-            backgroundColor: mainThemeBase(isDarkTheme).palette.primary.main,
+            // margin: 0,
+            borderRadius: '16px',
+            backgroundColor: mainThemeBase(isDarkTheme).palette.primary.light,
           },
         },
       },
       MuiDialogTitle: {
         styleOverrides: {
           root: {
-            margin: 0,
-            padding: 0,
-            textAlign: 'center',
-            color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //18px
-            fontSize: '2.13vh',
-            fontStyle: 'normal',
-            fontWeight: 700,
-            //24px
-            lineHeight: '2.84vh',
-            marginBottom: '1.66vh',
+            padding: '24px',
+            borderBottom: `1px solid ${mainThemeBase(isDarkTheme).palette.grey[800]}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            // margin: 0,
+            // padding: 0,
+            // textAlign: 'center',
+            // color: mainThemeBase(isDarkTheme).palette.text.primary,
+            // //18px
+            // fontSize: '2.13vh',
+            // fontStyle: 'normal',
+            // fontWeight: 700,
+            // //24px
+            // lineHeight: '2.84vh',
+            // marginBottom: '1.66vh',
           },
         },
       },
       MuiDialogContent: {
         styleOverrides: {
           root: {
-            margin: 0,
-            textAlign: 'center',
-            color: mainThemeBase(isDarkTheme).palette.text.primary,
-            //14px
-            fontSize: '1.66vh',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            //24px
-            lineHeight: '2.84vh',
-            padding: '0',
-            marginBottom: '1.66vh',
+            padding: '24px',
+            paddingTop: '24px !important',
+            // margin: 0,
+            // textAlign: 'center',
+            // color: mainThemeBase(isDarkTheme).palette.text.primary,
+            // //14px
+            // fontSize: '1.66vh',
+            // fontStyle: 'normal',
+            // fontWeight: 400,
+            // //24px
+            // lineHeight: '2.84vh',
+            // padding: '0',
+            // marginBottom: '1.66vh',
           },
         },
       },
       MuiDialogActions: {
         styleOverrides: {
           root: {
-            padding: '0',
+            padding: '24px',
+            borderTop: `1px solid ${mainThemeBase(isDarkTheme).palette.grey[800]}`,
+            // padding: '0',
           },
         },
       },

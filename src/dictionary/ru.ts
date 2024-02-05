@@ -2,6 +2,8 @@ const ruLocale: { [key: string]: string } = {
   //common
   'common.false': 'false',
   'common.true': 'true',
+  'common.cancel': 'Закрыть',
+  'common.back': 'Назад',
 
   //sidebar
   'sidebar.downloadFolder': 'Загрузить папку',
@@ -31,12 +33,22 @@ const ruLocale: { [key: string]: string } = {
   'study.time': 'Study Time',
   'study.description': 'Study Description',
   'study.id': 'Study ID',
-  'study.instances': 'Study Instances',
+  'study.instanceUID': 'Study Instance UID',
   'study.institutionName': 'Institution Name',
   'study.patientId': 'Patient ID',
   'study.patientName': 'Patient Name',
   'study.patientBirthDate': 'Patient Birth Date',
   'study.patientSex': 'Patient sex',
+
+  //study edit
+  'study.edit.attach.info': 'Attach this study to another existing Patient.',
+  'study.edit.attach': 'Change patient',
+  'study.edit.modify.info': 'Modify Patient/Study tags in this study only?',
+  'study.edit.modify': 'Modify Study tags',
+  'study.edit.modify.option1': 'Modify the original study. (generating new DICOM UIDs)',
+  'study.edit.modify.option2': 'Modify the original study. (keeping the original DICOM UIDs)',
+  'study.edit.modify.option3': 'Create a modified copy of the original study. (generating new DICOM UIDs and keeping the original study)',
+  'study.edit': 'Редактировать',
 
   //series:
   'series.date': 'Series Date',
