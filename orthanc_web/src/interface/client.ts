@@ -29,6 +29,15 @@ export const universalAxios = {
     }
   },
 
+  getPatient: async (id: string) => {
+    try {
+      const response = await instance.get(`/patients/${id}`)
+      return response.data
+    } catch (error: any) {
+      console.log('getPatient: ' + error)
+    }
+  },
+
   getStudies: async () => {
     try {
       const response = await instance.get(`/studies`)
@@ -58,9 +67,6 @@ export const universalAxios = {
 
   deleteStudy: async (data: any) => {
     try {
-      const tt = 'orthanc'
-      const ttt = 'orthanc'
-      const basicAuth = 'Basic ' + btoa(tt + ':' + ttt)
       const deleteData = JSON.stringify(data)
       fetch(`http://localhost:8042/tools/bulk-delete`, {
         headers: {
@@ -106,9 +112,6 @@ export const universalAxios = {
 
   studyEdit: async (study: IStudyEditForm, studyId: string) => {
     try {
-      const tt = 'orthanc'
-      const ttt = 'orthanc'
-      const basicAuth = 'Basic ' + btoa(tt + ':' + ttt)
       const postData = JSON.stringify(study)
       fetch(`http://localhost:8042/studies/${studyId}/modify`, {
         headers: {
@@ -122,6 +125,15 @@ export const universalAxios = {
       })
     } catch (error: any) {
       console.log('studyEdit: ' + error)
+    }
+  },
+
+  lookup: async (patiendId: string) => {
+    try {
+      const response = await instance.post(`/tools/lookup`, patiendId)
+      return response.data
+    } catch (error: any) {
+      console.log('lookup: ' + error)
     }
   },
 }
@@ -174,7 +186,7 @@ export interface SystemInfo {
 
 export interface IStudyEditForm {
   Force: boolean
-  Keep: []
+  Keep: string[]
   KeepSource: boolean
   Remove: []
   Replace: {

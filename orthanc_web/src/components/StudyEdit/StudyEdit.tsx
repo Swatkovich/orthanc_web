@@ -12,6 +12,7 @@ import StudyEditForm from '../StudyEditForm'
 import { StudyFull } from '../../interface/client'
 import { ReactComponent as CloseIcon } from '../../assets/img/close.svg'
 import OrthancStoreContext from '../../store/data/OrthancStore/OrthancStore'
+import ChangePatientForm from '../ChangePatientForm'
 
 export interface Props extends DialogProps {
   open: boolean
@@ -22,19 +23,32 @@ export interface Props extends DialogProps {
 
 const StudyEdit: FC<Props> = observer((props) => {
   const orthancStore = useContext(OrthancStoreContext)
-  const { studyEdit, getAllStudies, clearStudies } = orthancStore
+  const { studyEdit, getAllStudies, clearStudies, lookUp, getPatientById } = orthancStore
   const { open, onClose, title, study, ...rest } = props
   const [isModify, setIsModify] = useState<boolean>(false)
+  const [isChangePatient, setIsChangePatient] = useState<boolean>(false)
   const [isDiffer, setIsDiffer] = useState<boolean>(false)
   const [modifiedFields, setModifiedFields] = useState<{} | { [key: string]: string }>({})
+  const [initPatientId, setInitPatientId] = useState<string>('')
+  const [isKeeping, setIsKeeping] = useState<boolean>(false)
+
+  useEffect(() => {
+    setInitPatientId(study.patientId)
+  }, [study.patientId])
 
   const onModify = useCallback(() => {
     setIsModify(true)
   }, [])
 
-  const onBack = useCallback(() => {
-    setIsModify(false)
+  const onChangePatient = useCallback(() => {
+    setIsChangePatient(true)
   }, [])
+
+  const onBack = useCallback(() => {
+    isModify ? setIsModify(false) : setIsChangePatient(false)
+    setIsDiffer(false)
+    setInitPatientId(study.patientId)
+  }, [isModify, study.patientId])
 
   const handleClose = useCallback(() => {
     onClose()
@@ -42,12 +56,62 @@ const StudyEdit: FC<Props> = observer((props) => {
   }, [onBack, onClose])
 
   const onSubmit = useCallback(() => {
-    const data = { Force: true, Keep: [] as [], KeepSource: false, Remove: [] as [], Replace: modifiedFields, Synchronous: false }
-    studyEdit(data, study.id)
-      .then(() => handleClose())
-      .then(() => clearStudies())
-      .then(() => getAllStudies())
-  }, [clearStudies, getAllStudies, handleClose, modifiedFields, study.id, studyEdit])
+    if (isChangePatient) {
+      lookUp(initPatientId).then((patientData) => {
+        if (patientData.length) {
+          const id = patientData[0].ID
+          getPatientById(id).then((data) => {
+            const submitData = {
+              Force: true,
+              Keep: [] as string[],
+              KeepSource: false,
+              Remove: [] as [],
+              Replace: {
+                PatientBirthDate: data.MainDicomTags.PatientBirthDate,
+                PatientID: data.MainDicomTags.PatientID,
+                PatientName: data.MainDicomTags.PatientName,
+                PatientSex: data.MainDicomTags.PatientSex,
+              },
+              Synchronous: false,
+            }
+            if (isKeeping) {
+              submitData.Keep = ['StudyInstanceUID', 'SeriesInstanceUID', 'SOPInstanceUID'] as string[]
+            }
+            studyEdit(submitData, study.id)
+              .then(() => handleClose())
+              .then(() => {
+                setTimeout(() => {
+                  clearStudies()
+                  getAllStudies()
+                }, 5000)
+              })
+          })
+        }
+      })
+    } else {
+      const data = { Force: true, Keep: [] as [], KeepSource: false, Remove: [] as [], Replace: modifiedFields, Synchronous: false }
+      studyEdit(data, study.id)
+        .then(() => handleClose())
+        .then(() => {
+          setTimeout(() => {
+            clearStudies()
+            getAllStudies()
+          }, 5000)
+        })
+    }
+  }, [
+    clearStudies,
+    getAllStudies,
+    getPatientById,
+    handleClose,
+    initPatientId,
+    isChangePatient,
+    isKeeping,
+    lookUp,
+    modifiedFields,
+    study.id,
+    studyEdit,
+  ])
 
   useEffect(() => {
     if (Object.keys(modifiedFields).length) {
@@ -57,6 +121,14 @@ const StudyEdit: FC<Props> = observer((props) => {
     }
   }, [modifiedFields])
 
+  useEffect(() => {
+    if (study.patientId !== initPatientId) {
+      setIsDiffer(true)
+    } else {
+      setIsDiffer(false)
+    }
+  }, [initPatientId, study.patientId])
+
   return (
     <Dialog maxWidth="md" open={open} onClose={handleClose} {...rest}>
       <DialogTitle>
@@ -65,11 +137,13 @@ const StudyEdit: FC<Props> = observer((props) => {
       </DialogTitle>
 
       <DialogContent>
-        {!isModify && (
+        {!isModify && !isChangePatient && (
           <>
             <DialogElement>
               <Typography variant="subtitle1">{FormatMessage('study.edit.attach.info')}</Typography>
-              <Button variant="contained">{FormatMessage('study.edit.attach')}</Button>
+              <Button variant="contained" onClick={onChangePatient}>
+                {FormatMessage('study.edit.attach')}
+              </Button>
             </DialogElement>
             <DialogElement>
               <Typography variant="subtitle1">{FormatMessage('study.edit.modify.info')}</Typography>
@@ -80,9 +154,10 @@ const StudyEdit: FC<Props> = observer((props) => {
           </>
         )}
         {isModify && <StudyEditForm study={study} handleModifiedFields={setModifiedFields} modifiedFields={modifiedFields} />}
+        {isChangePatient && <ChangePatientForm patientId={initPatientId as string} setPatientId={setInitPatientId} setIsKeeping={setIsKeeping} />}
       </DialogContent>
       <DialogActions>
-        {isModify && (
+        {(isModify || isChangePatient) && (
           <Button variant="contained" onClick={onBack}>
             {FormatMessage('common.back')}
           </Button>
@@ -90,7 +165,7 @@ const StudyEdit: FC<Props> = observer((props) => {
         <Button variant="contained" onClick={handleClose}>
           {FormatMessage('common.cancel')}
         </Button>
-        {isModify && (
+        {(isModify || isChangePatient) && (
           <Button disabled={!isDiffer} variant="contained" onClick={onSubmit}>
             {FormatMessage('study.edit')}
           </Button>

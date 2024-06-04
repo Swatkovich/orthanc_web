@@ -158,6 +158,17 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
         },
       },
+      MuiButtonBase: {
+        styleOverrides: {
+          root: {
+            '&.MuiRadio-root': {
+              '&.Mui-checked': {
+                color: mainThemeBase(isDarkTheme).palette.secondary.light,
+              },
+            },
+          },
+        },
+      },
       MuiButton: {
         defaultProps: {
           disableTouchRipple: true,
@@ -301,11 +312,6 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
                 background: mainThemeBase(isDarkTheme).palette.secondary.dark,
               },
             },
-            '&.clicked': {
-              '& > td': {
-                background: mainThemeBase(isDarkTheme).palette.secondary.light,
-              },
-            },
             '&.MuiTableRow-head': {
               '&:hover': {
                 background: 'unset',
@@ -319,6 +325,7 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           root: {
             background: mainThemeBase(isDarkTheme).palette.primary.dark,
             border: 'none',
+            borderBottom: `1px solid ${mainThemeBase(isDarkTheme).palette.secondary.main}`,
             boxSizing: 'border-box',
             height: '64px',
             fontSize: '14px',
@@ -333,6 +340,7 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
               height: '36px',
               padding: '8px 16px',
               color: mainThemeBase(isDarkTheme).palette.text.secondary,
+              borderBottom: 'none',
             },
           },
         },

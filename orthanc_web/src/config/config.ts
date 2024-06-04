@@ -8,7 +8,7 @@ const dev = {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const prod = {
   url: {
-    API_BASE_URL: '',
+    API_BASE_URL: 'http://NAS7C08A0:8081/orthanc',
   },
 }
 

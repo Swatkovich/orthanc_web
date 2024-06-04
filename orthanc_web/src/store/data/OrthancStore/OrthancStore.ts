@@ -32,6 +32,10 @@ class OrthancStore {
     return universalAxios.getPatients().then((data) => (this.patients = data))
   }
 
+  getPatientById(id: string) {
+    return universalAxios.getPatient(id)
+  }
+
   getStudiesId() {
     return universalAxios.getStudies().then((data) => (this.studiesId = data))
   }
@@ -113,6 +117,10 @@ class OrthancStore {
 
   async studyEdit(study: IStudyEditForm, studyId: string) {
     return await universalAxios.studyEdit(study, studyId)
+  }
+
+  async lookUp(patientId: string) {
+    return await universalAxios.lookup(patientId)
   }
 
   clearStudies() {
