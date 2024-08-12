@@ -1,44 +1,44 @@
 const ruLocale: { [key: string]: string } = {
   //common
-  'common.false': 'false',
-  'common.true': 'true',
+  'common.false': 'Нет',
+  'common.true': 'Да',
   'common.cancel': 'Закрыть',
   'common.back': 'Назад',
 
   //sidebar
   'sidebar.downloadFolder': 'Загрузить папку',
   'sidebar.downloadFile': 'Загрузить файлы',
-  'sidebar.statistics': 'STATISTICS',
-  'sidebar.systemInfo': 'SYSTEM INFO',
+  'sidebar.statistics': 'Статистика',
+  'sidebar.systemInfo': 'Системная информация',
   'sidebar.downloaded': 'Загружено',
   'sidebar.zip': 'Перетащите сюда Zip файл для загрузки',
 
   //table
-  'table.header.patientBirthDate': 'Patient Birth Date',
-  'table.header.patientName': 'Patient Name',
-  'table.header.patientId': 'Patient ID',
-  'table.header.studyDescription': 'Study Description',
-  'table.header.studyDate': 'Study Description',
-  'table.header.modalitiesInStudy': 'Modalities in Study',
-  'table.header.series': '# series',
+  'table.header.patientBirthDate': 'Дата рождения',
+  'table.header.patientName': 'ФИО пациента',
+  'table.header.patientId': 'ИН пациента',
+  'table.header.studyDescription': 'Описание исследования',
+  'table.header.studyDate': 'Дата исследования',
+  'table.header.modalitiesInStudy': 'Модальности исследования',
+  'table.header.series': 'Число серий',
 
   //statistics
-  'statistics.studies': 'Studies',
-  'statistics.series': 'Series',
-  'statistics.instances': 'Instances',
-  'statistics.storage': 'Storage Size',
+  'statistics.studies': 'Исследований',
+  'statistics.series': 'Серий',
+  'statistics.instances': 'Элементов',
+  'statistics.storage': 'Размер хранилища',
 
   //study
-  'study.date': 'Study Date',
-  'study.time': 'Study Time',
-  'study.description': 'Study Description',
-  'study.id': 'Study ID',
-  'study.instanceUID': 'Study Instance UID',
-  'study.institutionName': 'Institution Name',
-  'study.patientId': 'Patient ID',
-  'study.patientName': 'Patient Name',
-  'study.patientBirthDate': 'Patient Birth Date',
-  'study.patientSex': 'Patient sex',
+  'study.date': 'Дата исследования',
+  'study.time': 'Время исследования',
+  'study.description': 'Описание исследования',
+  'study.id': 'ИН исследования',
+  'study.instances': 'Число исследований',
+  'study.institutionName': 'Наименование ЛПУ',
+  'study.patientId': 'ИН пациента',
+  'study.patientName': 'ФИО пациента',
+  'study.patientBirthDate': 'Дата рождения',
+  'study.patientSex': 'Пол',
 
   //study edit
   'study.edit.attach.info': 'Attach this study to another existing Patient.',
@@ -51,21 +51,21 @@ const ruLocale: { [key: string]: string } = {
   'study.edit': 'Редактировать',
 
   //series:
-  'series.date': 'Series Date',
-  'series.number': 'Series number',
-  'series.time': 'Series time',
-  'series.description': 'Series Description',
-  'series.modality': 'Modality',
-  'series.instances': '# Instances',
-  'series.bodyPartExamined': 'Body part examined',
-  'series.protocolName': 'Protocol Name',
-  'series.instancesUID': 'Series Instances UID',
+  'series.date': 'Дата серии',
+  'series.number': 'Номер серии',
+  'series.time': 'Время серии',
+  'series.description': 'Описание серии',
+  'series.modality': 'Модальность',
+  'series.instances': 'Элементов',
+  'series.bodyPartExamined': 'Анатомическая область',
+  'series.protocolName': 'Наименование протокола',
+  'series.instancesUID': 'УИН серии',
 
   //info
-  'info.dicomAet': 'DICOM AET',
-  'info.dicomPort': 'DICOM Port',
-  'info.overwrite': 'Overwrite instances',
-  'info.storage': 'Storage Compression',
+  'info.dicomAet': 'DICOM AETitle',
+  'info.dicomPort': 'DICOM Порт',
+  'info.overwrite': 'Перезаписывать элементы',
+  'info.storage': 'Сжатие хранилища',
 }
 
 export default ruLocale
