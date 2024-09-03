@@ -55,24 +55,24 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
         styleOverrides: {
           body1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            fontSize: '18px',
+            fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 700,
-            lineHeight: '24px',
+            lineHeight: '18px',
           },
           body2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            fontSize: '16px',
+            fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: 400,
-            lineHeight: '18px',
+            lineHeight: '16px',
           },
           h1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            fontSize: '18px',
+            fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 700,
-            lineHeight: '24px',
+            lineHeight: '18px',
           },
           h2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
@@ -92,17 +92,17 @@ export function mainTheme(isDarkTheme?: boolean): Theme {
           },
           h4: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            fontSize: '20px',
+            fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 400,
-            lineHeight: '32px',
+            lineHeight: '18px',
           },
           subtitle1: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            fontSize: '16px',
+            fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 400,
-            lineHeight: '20px',
+            lineHeight: '16px',
           },
           subtitle2: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,

@@ -14,7 +14,7 @@ export const StudyInfo = styled('div')(({ theme }) => ({
   display: 'flex',
   flexFlow: 'column',
   width: '48%',
-  marginRight: '20px',
+  marginRight: '40px',
 }))
 
 export const PatientInfo = styled('div')(({ theme }) => ({

@@ -33,7 +33,7 @@ const ruLocale: { [key: string]: string } = {
   'study.time': 'Время исследования',
   'study.description': 'Описание исследования',
   'study.id': 'ИН исследования',
-  'study.instances': 'Число исследований',
+  'study.instanceUID': 'Число исследований',
   'study.institutionName': 'Наименование ЛПУ',
   'study.patientId': 'ИН пациента',
   'study.patientName': 'ФИО пациента',
