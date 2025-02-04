@@ -16,7 +16,7 @@
     "EnableStorage" : true,
     "Host" : "host.docker.internal",
     "Port" : 5433,
-    "Database" : "orthanc",
+    "Database" : "orthanc_db",
     "Username" : "orthanc",
     "Password" : "orthanc",
     "EnableSsl" : false,               
@@ -28,7 +28,7 @@
     "HousekeepingInterval": 1          
   },
   "AwsS3Storage" : {
-    "BucketName": "orthanc",
+    "BucketName": "orthanc_bucket",
     "Region" : "eu-west-1",
     "Endpoint": "http://host.docker.internal:9000/",
     "AccessKey": "minioadmin",
