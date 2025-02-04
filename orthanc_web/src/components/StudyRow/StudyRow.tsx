@@ -19,7 +19,9 @@ const StudyRow: React.FC<Props> = observer((props) => {
 
   const onDelete = useCallback(
     async (id: string) => {
-      deleteStudy({ Resources: [id] }).then(() => getAllStudies())
+      deleteStudy({ Resources: [id] })
+        .then(() => new Promise((resolve) => setTimeout(resolve, 1000))) // Pause for 1 second
+        .then(() => getAllStudies())
     },
     [deleteStudy, getAllStudies]
   )
@@ -38,7 +40,12 @@ const StudyRow: React.FC<Props> = observer((props) => {
         <TableCell>{study.studyDate}</TableCell>
         <TableCell>{study.modalitiesInStudy}</TableCell>
         <TableCell>{study.series.length}</TableCell>
-        <TableCell onClick={() => onDelete(study.id)}>
+        <TableCell
+          onClick={(event) => {
+            event.stopPropagation()
+            onDelete(study.id)
+          }}
+        >
           <DeleteIconStyled />
         </TableCell>
       </TableRow>

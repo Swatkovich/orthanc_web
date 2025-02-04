@@ -28,7 +28,7 @@
     "HousekeepingInterval": 1          
   },
   "AwsS3Storage" : {
-    "BucketName": "orthanc_bucket",
+    "BucketName": "orthanc.bucket",
     "Region" : "eu-west-1",
     "Endpoint": "http://host.docker.internal:9000/",
     "AccessKey": "minioadmin",
