@@ -8,6 +8,7 @@ orthanc:
 image: jodogne/orthanc-plugins
 ports: - 4243:4242 - 8043:8042
 volumes: - /etc/orthanc
+
 nginx:
 image: nginx:1.16.1
 ports: - 8081:80 - 8444:443

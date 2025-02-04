@@ -5,22 +5,25 @@ services:
   orthanc:
     container_name: orthanc
     image: jodogne/orthanc-plugins
+    environment:
+      - ORTHANC_DICOM_AET=NEW_AET
     ports:
-      - 4243:4242
-      - 8043:8042
+      - 4242:4242
+      - 8042:8042
     volumes:
-      - ./orthanc_data:/var/lib/orthanc/db
+      # - ./orthanc_data:/var/lib/orthanc/db
+      - ./orthanc.json:/etc/orthanc/orthanc.json
   nginx:
     image: nginx:1.16.1
     ports:
-      - 8081:80
+      - 8080:80
       - 8444:443
     volumes:
       - ${NGINX_DEFAULT_CONF:-./nginx/default.conf}:/etc/nginx/conf.d/default.conf
   front-service:
     container_name: web
     build:
-      context: ../../../orthanc_web
+      context: ./orthanc_web
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
@@ -40,10 +43,10 @@ services:
 #       - 8443:443
 #     volumes:
 #       - ${NGINX_DEFAULT_CONF:-./nginx/default.conf}:/etc/nginx/conf.d/default.conf
-#   front-service:
-#     container_name: web
-#     build:
-#       context: ./orthanc_web
-#       dockerfile: Dockerfile
-#     ports:
-#       - '3000:3000'
+  # front-service:
+  #   container_name: web
+  #   build:
+  #     context: ./orthanc_web
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '3000:3000'
